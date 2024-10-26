@@ -37,9 +37,11 @@ public class Encadrant {
     @NotBlank(message = "Le departement est requis")
     private String departement;
 
+    // Un encadrant supervise plusieur sujets
     @OneToMany(mappedBy = "encadrant")
     private List<SujetPFE> sujets;
 
+    // Un encadrant peut avoir plusieurs rendez-vous
     @OneToMany(mappedBy = "encadrant")
     private List<RendezVous> rendezVousList;
 }

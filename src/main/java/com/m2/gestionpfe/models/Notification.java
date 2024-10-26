@@ -24,10 +24,21 @@ public class Notification {
     private String message;
 
     @ManyToOne
-    @JoinColumn(name = "destinataire_id", nullable = false)
-    @NotNull(message = "Le destinataire est requis")
-    private Etudiant destinataire; // Ou Encadrant, selon la logique
+    @JoinColumn(name = "destinataire_etudiant_id")
+    private Etudiant destinataireEtudiant; // Peut être null
+
+    @ManyToOne
+    @JoinColumn(name = "destinataire_encadrant_id")
+    private Encadrant destinataireEncadrant; // Peut être null
+
 
     @NotNull(message = "La date d'envoi est requise")
     private LocalDateTime dateEnvoi;
+
+    // Méthode pour valider le destinataire
+    public void validateDestinataire() {
+        if (destinataireEtudiant == null && destinataireEncadrant == null) {
+            throw new IllegalArgumentException("Un destinataire doit être spécifié.");
+        }
+    }
 }

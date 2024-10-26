@@ -14,7 +14,6 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "sujet_pfe")
-
 public class SujetPFE {
 
     @Id
@@ -31,13 +30,15 @@ public class SujetPFE {
     @Min(value = 1, message = "Le nombre d'etudiants doit etre au moins 1")
     private int nombreEtudiantsNecessaires;
 
+    // Relation avec Encadrant
     @ManyToOne
     @JoinColumn(name = "encadrant_id", nullable = false)
     private Encadrant encadrant;
 
-    @OneToOne(mappedBy = "sujet")
-    private Soutenance soutenance;
-
+    // Un sujet peut avoir plusieurs postulations
     @OneToMany(mappedBy = "sujet")
     private List<Postulation> postulations;
+
+    @OneToMany(mappedBy = "sujet")
+    private List<Document> documents;
 }

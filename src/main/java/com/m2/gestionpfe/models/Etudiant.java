@@ -41,9 +41,11 @@ public class Etudiant {
     @NotBlank(message = "La filiere est requise")
     private String filiere;
 
+    // Un étudiant peut postuler à plusieurs sujets
     @OneToMany(mappedBy = "etudiant")
     private List<Postulation> postulations;
 
+    // Un étudiant peut avoir plusieurs rendez-vous
     @OneToMany(mappedBy = "etudiant")
     private List<RendezVous> rendezVousList;
 }

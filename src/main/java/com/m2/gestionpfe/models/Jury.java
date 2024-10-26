@@ -34,6 +34,7 @@ public class Jury {
     @NotBlank(message = "Le role est requis")
     private String role; // rapporteur, président de jury, invité
 
+    // Un jury peut évaluer plusieurs soutenances
     @ManyToMany(mappedBy = "jury")
     private List<Soutenance> soutenances;
 }
