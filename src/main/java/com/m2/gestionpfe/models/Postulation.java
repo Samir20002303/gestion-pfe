@@ -19,12 +19,10 @@ public class Postulation {
 
     @ManyToOne
     @JoinColumn(name = "etudiant_id", nullable = false)
-    @NotNull(message = "L'etudiant est requis")
     private Etudiant etudiant;
 
     @ManyToOne
     @JoinColumn(name = "sujet_id", nullable = false)
-    @NotNull(message = "Le sujet est requis")
     private SujetPFE sujet;
 
     @NotNull(message = "L'etat de la postulation est requis")

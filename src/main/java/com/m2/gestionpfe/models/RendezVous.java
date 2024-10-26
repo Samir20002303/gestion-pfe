@@ -30,4 +30,6 @@ public class RendezVous {
     @JoinColumn(name = "encadrant_id", nullable = false)
     private Encadrant encadrant;
 
+
+
 }

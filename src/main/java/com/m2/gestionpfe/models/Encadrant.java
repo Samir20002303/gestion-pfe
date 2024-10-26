@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -34,4 +36,10 @@ public class Encadrant {
 
     @NotBlank(message = "Le departement est requis")
     private String departement;
+
+    @OneToMany(mappedBy = "encadrant")
+    private List<SujetPFE> sujets;
+
+    @OneToMany(mappedBy = "encadrant")
+    private List<RendezVous> rendezVousList;
 }

@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,11 +23,14 @@ public class Soutenance {
     @NotNull(message = "La date et l'heurE sont requises")
     private LocalDateTime dateHeure;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "sujet_id", nullable = false)
     private SujetPFE sujet;
 
-    @ManyToOne
-    @JoinColumn(name = "jury_id", nullable = false)
-    private Jury jury;
+    @ManyToMany
+    @JoinTable( name = "soutenance_jury",
+                joinColumns = @JoinColumn(name = "soutenance_id"),
+                inverseJoinColumns = @JoinColumn(name = "jury_id"))
+    private List<Jury> jury;
+
 }

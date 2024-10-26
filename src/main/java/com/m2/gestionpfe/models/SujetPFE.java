@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -32,4 +34,10 @@ public class SujetPFE {
     @ManyToOne
     @JoinColumn(name = "encadrant_id", nullable = false)
     private Encadrant encadrant;
+
+    @OneToOne(mappedBy = "sujet")
+    private Soutenance soutenance;
+
+    @OneToMany(mappedBy = "sujet")
+    private List<Postulation> postulations;
 }

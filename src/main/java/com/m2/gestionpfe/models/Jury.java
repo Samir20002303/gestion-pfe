@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -31,4 +33,7 @@ public class Jury {
 
     @NotBlank(message = "Le role est requis")
     private String role; // rapporteur, président de jury, invité
+
+    @ManyToMany(mappedBy = "jury")
+    private List<Soutenance> soutenances;
 }

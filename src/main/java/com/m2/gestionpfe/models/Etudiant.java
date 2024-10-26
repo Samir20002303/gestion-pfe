@@ -7,6 +7,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -38,4 +40,10 @@ public class Etudiant {
 
     @NotBlank(message = "La filiere est requise")
     private String filiere;
+
+    @OneToMany(mappedBy = "etudiant")
+    private List<Postulation> postulations;
+
+    @OneToMany(mappedBy = "etudiant")
+    private List<RendezVous> rendezVousList;
 }
